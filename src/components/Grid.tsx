@@ -10,9 +10,9 @@ const Grid = () => {
   const savedLayout: LayoutItem[] = JSON.parse(
     localStorage.getItem("layout") || "[]"
   ) || [
-    { i: "1", x: 0, y: 0, w: 3, h: 2, static: false },
-    { i: "2", x: 3, y: 0, w: 3, h: 2 },
-    { i: "3", x: 6, y: 0, w: 3, h: 2 },
+    { i: "1", x: 0, y: 0, w: 3, h: 2, data: { color: "green", text: "Box" } },
+    { i: "2", x: 3, y: 0, w: 3, h: 2, data: { color: "green", text: "Box" } },
+    { i: "3", x: 6, y: 0, w: 3, h: 2, data: { color: "green", text: "Box" } },
   ];
 
   //this is our snapshot itself.
@@ -33,7 +33,7 @@ const Grid = () => {
   const [historyIndex, setHistoryIndex] = useState<number>(0);
   const defaultLayout = useMemo(
     () => [
-      { i: "1", x: 0, y: 0, w: 3, h: 2, static: false },
+      { i: "1", x: 0, y: 0, w: 3, h: 2 },
       { i: "2", x: 3, y: 0, w: 3, h: 2 },
       { i: "3", x: 6, y: 0, w: 3, h: 2 },
     ],
@@ -91,6 +91,14 @@ const Grid = () => {
     setHistoryIndex(0);
     setCounter(4);
   };
+
+  // Control panel UI - A form to show the width, height and change of color, text
+
+  // const [selectedItem, setSelectedItem] = useState<LayoutItem | null>(null);
+
+  // const onBoxClick = (item: Layout) => {
+  //   setSelectedItem(item);
+  // };
 
   return (
     <>
