@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import GridLayout, { Layout } from "react-grid-layout";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
@@ -31,13 +31,23 @@ const Grid = () => {
      our history track the current position in the history to enable our undo and redo actions
      */
   const [historyIndex, setHistoryIndex] = useState<number>(0);
+  const defaultLayout = useMemo(
+    () => [
+      { i: "1", x: 0, y: 0, w: 3, h: 2, static: false },
+      { i: "2", x: 3, y: 0, w: 3, h: 2 },
+      { i: "3", x: 6, y: 0, w: 3, h: 2 },
+    ],
+    []
+  );
 
-  // useEffect(() => {
-  //   const savedLayout = localStorage.getItem("layout");
-  //   if (savedLayout) {
-  //     setLayout(JSON.parse(savedLayout));
-  //   }
-  // }, []);
+  useEffect(() => {
+    const savedLayout = localStorage.getItem("layout");
+    if (savedLayout) {
+      setLayout(JSON.parse(savedLayout));
+    } else {
+      setLayout(defaultLayout);
+    }
+  }, [defaultLayout]);
 
   /*
      This function is called when a user drags or resizes an item,  it basically update the layout state and stores the new layout in localstorage to keep the state persistent between sessions.
@@ -51,6 +61,7 @@ const Grid = () => {
     setHistory(newHistory);
     setHistoryIndex(newHistory.length - 1);
   };
+
   const [counter, setCounter] = useState(4);
   function addItem() {
     const newItem = { i: `${counter}`, x: 0, y: 0, w: 3, h: 2, static: false };
@@ -71,17 +82,11 @@ const Grid = () => {
       setHistoryIndex(historyIndex + 1);
     }
   };
-  const defaultLayout = [
-    { i: "1", x: 0, y: 0, w: 3, h: 2, static: false },
-    { i: "2", x: 3, y: 0, w: 3, h: 2 },
-    { i: "3", x: 6, y: 0, w: 3, h: 2 },
-  ];
+
   const resetLayout = () => {
     localStorage.removeItem("layout");
 
     setLayout(defaultLayout);
-
-    // Optionally, reset history if you're using undo functionality
     setHistory([defaultLayout]);
     setHistoryIndex(0);
   };
