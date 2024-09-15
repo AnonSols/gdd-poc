@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .layout {
+    @apply bg-slate-200 p-2;
+  }
+
+  .box {
+    background-color: #344ddb;
+    color: white;
+    text-align: center;
+
+    font-size: 24px;
+    /* line-height: 200px; Make it vertically aligned */
+    border-radius: 10px;
+    cursor: grab;
+    @apply flex items-center justify-center shadow-lg;
+  }
+
+  button {
+    @apply rounded-lg shadow-lg outline-none hover:ring-2 hover:ring-[#344ddb] py-3 px-5 my-4 mr-4 cursor-pointer bg-slate-300 text-stone-700 hover:bg-slate-400 hover:text-slate-100 transition-all duration-300;
+  }
+}
