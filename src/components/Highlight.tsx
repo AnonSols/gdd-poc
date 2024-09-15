@@ -33,7 +33,7 @@ export const HeroHighlight = ({
       )}
       onMouseMove={handleMouseMove}
     >
-      <div className="absolute inset-0 bg-grid-small-neutral-300/[0.06]  dark:bg-grid-small-neutral-800  pointer-events-none" />
+      <div className="absolute inset-0 bg-grid-small-neutral-300/[0.1]  dark:bg-grid-small-neutral-800  pointer-events-none" />
       <motion.div
         className="pointer-events-none bg-grid-small-indigo-500 dark:bg-grid-small-indigo-500   absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100"
         style={{

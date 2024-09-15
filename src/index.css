@@ -4,7 +4,7 @@
 
 @layer components {
   .layout {
-    @apply bg-slate-500 p-2 rounded-md;
+    @apply bg-slate-500 rounded-md;
   }
   body {
     @apply text-neutral-100;

@@ -89,6 +89,7 @@ const Grid = () => {
     setLayout(defaultLayout);
     setHistory([defaultLayout]);
     setHistoryIndex(0);
+    setCounter(4);
   };
 
   return (
@@ -118,10 +119,10 @@ const Grid = () => {
         <GridLayout
           layout={layout}
           className="layout"
-          rowHeight={60}
-          width={600}
+          rowHeight={50}
+          width={680}
           draggableHandle=".drag-handle"
-          cols={12}
+          cols={18}
           isResizable={true}
           onLayoutChange={onLayoutChange}
         >
