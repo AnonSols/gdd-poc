@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import ReactGridLayout from "react-grid-layout";
+import { useState } from "react";
 import GridLayout, { Layout } from "react-grid-layout";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
@@ -33,12 +32,12 @@ const Grid = () => {
      */
   const [historyIndex, setHistoryIndex] = useState<number>(0);
 
-  useEffect(() => {
-    const savedLayout = localStorage.getItem("layout");
-    if (savedLayout) {
-      setLayout(JSON.parse(savedLayout));
-    }
-  }, []);
+  // useEffect(() => {
+  //   const savedLayout = localStorage.getItem("layout");
+  //   if (savedLayout) {
+  //     setLayout(JSON.parse(savedLayout));
+  //   }
+  // }, []);
 
   /*
      This function is called when a user drags or resizes an item,  it basically update the layout state and stores the new layout in localstorage to keep the state persistent between sessions.
@@ -52,7 +51,13 @@ const Grid = () => {
     setHistory(newHistory);
     setHistoryIndex(newHistory.length - 1);
   };
+  const [counter, setCounter] = useState(4);
+  function addItem() {
+    const newItem = { i: `${counter}`, x: 0, y: 0, w: 3, h: 2, static: false };
 
+    setLayout([...layout, newItem]);
+    setCounter((c) => c + 1);
+  }
   const undo = () => {
     if (historyIndex > 0) {
       setLayout(history[historyIndex - 1]);
@@ -66,91 +71,66 @@ const Grid = () => {
       setHistoryIndex(historyIndex + 1);
     }
   };
+  const defaultLayout = [
+    { i: "1", x: 0, y: 0, w: 3, h: 2, static: false },
+    { i: "2", x: 3, y: 0, w: 3, h: 2 },
+    { i: "3", x: 6, y: 0, w: 3, h: 2 },
+  ];
+  const resetLayout = () => {
+    localStorage.removeItem("layout");
 
-  const [sourceLayout, setSourceLayout] = useState<LayoutItem[]>([
-    { i: "1", x: 0, y: 0, w: 2, h: 2 },
-    { i: "2", x: 2, y: 0, w: 2, h: 2 },
-  ]);
+    setLayout(defaultLayout);
 
-  const [targetLayout, setTargetLayout] = useState<LayoutItem[]>([]); // Initially empty
-
-  const [draggedItem, setDraggedItem] = useState<LayoutItem | null>(null);
-
-  const onSourceDragStart = (layout: LayoutItem[], oldItem: LayoutItem) => {
-    setDraggedItem(oldItem);
+    // Optionally, reset history if you're using undo functionality
+    setHistory([defaultLayout]);
+    setHistoryIndex(0);
   };
 
   return (
     <>
-      <div>
-        <button onClick={undo} disabled={historyIndex === 0}>
-          Undo
-        </button>
-        <button onClick={redo} disabled={historyIndex === history.length - 1}>
-          Redo
-        </button>
-        <GridLayout
-          className="layout"
-          layout={layout}
-          cols={12}
-          rowHeight={90}
-          width={1200}
-          draggableHandle=".drag-handle"
-          isResizable={true}
-          onLayoutChange={(newLayout) => onLayoutChange(newLayout)}
-        >
-          {layout &&
-            layout.map((item) => (
-              <div
-                key={item.i}
-                className="box drag-handle"
-              >{`Box ${item.i}`}</div>
-            ))}
-        </GridLayout>
-      </div>
-
-      <section className="flex justify-between gap-4 my-4">
-        {/* Source Grid */}
-        <div className="w-[50%] layout">
-          <div className="flex justify-between">
-            <h3>Source Grid</h3>
-            <button>Add item</button>
+      <div className="flex flex-col">
+        <section className="flex items-center justify-between">
+          <div>
+            <button
+              className="my-4 mr-4"
+              onClick={undo}
+              disabled={historyIndex === 0}
+            >
+              Undo
+            </button>
+            <button
+              className="my-4 mr-4"
+              onClick={redo}
+              disabled={historyIndex === history.length - 1}
+            >
+              Redo
+            </button>
           </div>
-          <ReactGridLayout
-            layout={sourceLayout}
-            className=""
-            onLayoutChange={(newLayout) => setSourceLayout(newLayout)}
-            cols={6}
-            rowHeight={30}
-            width={600}
-          >
-            {sourceLayout.map((item) => (
-              <div key={item.i} className="box" data-grid={item}>
-                Item {item.i}
-              </div>
-            ))}
-          </ReactGridLayout>
-        </div>
 
-        {/* Target Grid */}
-        <section className="w-[50%] layout">
-          <h3>Target Grid</h3>
-          <ReactGridLayout
-            layout={targetLayout}
-            className="drag-handle"
-            onLayoutChange={(newLayout) => setTargetLayout(newLayout)}
-            cols={6}
-            rowHeight={30}
-            width={600}
-          >
-            {targetLayout.map((item) => (
-              <div key={item.i} className="box drag-handle" data-grid={item}>
-                Item {item.i}
-              </div>
-            ))}
-          </ReactGridLayout>
+          <button onClick={addItem}>Add new Item</button>
         </section>
-      </section>
+
+        <GridLayout
+          layout={layout}
+          className="layout"
+          rowHeight={60}
+          width={600}
+          draggableHandle=".drag-handle"
+          cols={12}
+          isResizable={true}
+          onLayoutChange={onLayoutChange}
+        >
+          {layout.map((item) => (
+            <div className="box drag-handle" key={item.i}>
+              {`Box ${item.i}`}
+            </div>
+          ))}
+        </GridLayout>
+
+        <button className="self-end mt-5" onClick={resetLayout}>
+          Reset Layout
+        </button>
+      </div>
     </>
   );
 };

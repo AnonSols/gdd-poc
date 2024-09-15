@@ -16,10 +16,10 @@
     /* line-height: 200px; Make it vertically aligned */
     border-radius: 10px;
     cursor: grab;
-    @apply flex items-center justify-center shadow-lg;
+    @apply flex items-center hover:bg-[#4f65e4]  justify-center shadow-lg;
   }
 
   button {
-    @apply rounded-lg shadow-lg outline-none hover:ring-2 hover:ring-[#344ddb] py-3 px-5 my-4 mr-4 cursor-pointer bg-slate-300 text-stone-700 hover:bg-slate-400 hover:text-slate-100 transition-all duration-300;
+    @apply rounded-lg shadow-lg outline-none hover:ring-2 hover:ring-[#344ddb] py-3 px-5  cursor-pointer bg-slate-300 text-stone-700 hover:bg-slate-400 hover:text-slate-100 transition-all duration-300 disabled:bg-slate-100 disabled:cursor-not-allowed disabled:hover:text-stone-700;
   }
 }

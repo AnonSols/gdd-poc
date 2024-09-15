@@ -2,6 +2,7 @@ import Grid from "./components/Grid";
 
 const App = () => {
   const year = new Date().getFullYear();
+
   return (
     <div className="h-dvh w-full grid grid-rows-[auto_2fr_auto]  ">
       <header className="items-center justify-center flex py-4">
@@ -9,7 +10,7 @@ const App = () => {
           Ubeaths's Grid Drag-and-Drop PoC
         </h1>
       </header>
-      <main className="overflow-scroll ">
+      <main className="overflow-scroll">
         <section className=" mx-auto p-10 max-w-3xl">
           <Grid />
         </section>
