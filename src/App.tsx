@@ -5,7 +5,7 @@ const App = () => {
   const year = new Date().getFullYear();
 
   return (
-    <HeroHighlight className="h-dvh w-full grid grid-rows-[auto_2fr_auto]  ">
+    <HeroHighlight className="min-h-dvh w-full grid grid-rows-[auto_2fr_auto]  ">
       <header className="items-center justify-center flex py-4">
         <h1 className="tracking-wider text-2xl  md:text-3xl lg:text-4xl font-bold text-white">
           Ubeath's Grid Drag-and-Drop PoC
