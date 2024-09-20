@@ -1,8 +1,6 @@
-
 const Gridv2 = () => {
-  return (
-    <div>Gridv2</div>
-  )
-}
+  // update the new grid layout here
+  return <div>Gridv2</div>;
+};
 
-export default Gridv2
+export default Gridv2;
