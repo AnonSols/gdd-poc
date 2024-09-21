@@ -1,12 +1,15 @@
 import { useDrop } from "react-dnd";
 import { DropContainerProtocol } from "../types/types";
-import { FC } from "react";
+import { FC, useState } from "react";
+import DraggableBox from "./DraggableBox";
 
-const DropContainer: FC<DropContainerProtocol> = ({ onDrop }) => {
+const DropContainer: FC<DropContainerProtocol> = ({ id, accentType }) => {
+  const [items, setItems] = useState<string[]>([]);
+
   const [{ isOver, canDrop }, drop] = useDrop({
-    accept: "box",
-    drop: (item) => {
-      onDrop(item);
+    accept: accentType,
+    drop: (item: { id: string }) => {
+      setItems((prevItems) => [...prevItems, item.id]);
     },
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
@@ -16,18 +19,16 @@ const DropContainer: FC<DropContainerProtocol> = ({ onDrop }) => {
   return (
     <div
       ref={drop}
-      style={{
-        height: "300px",
-        width: "300px",
-        backgroundColor: isOver
-          ? "lightgreen"
-          : canDrop
-          ? "lightyellow"
-          : "white",
-        padding: "10px",
-      }}
+      className={`p-10 w-[300px] h-[300px] bg-[${
+        isOver ? "lightgreen" : canDrop ? "lightyellow" : "white"
+      }]`}
+    
     >
-      Drop here
+      <p>{`MY DROP ZONE ${id}`}</p>
+
+      {items.map((item) => (
+        <DraggableBox key={item} id={item} type={accentType} />
+      ))}
     </div>
   );
 };

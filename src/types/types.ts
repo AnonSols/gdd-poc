@@ -4,5 +4,6 @@ export interface DragItemProtocol {
 }
 
 export interface DropContainerProtocol {
-  onDrop: (item: unknown) => void;
+  id: string;
+  accentType: string;
 }

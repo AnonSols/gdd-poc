@@ -1,5 +1,5 @@
 import { DndProvider } from "react-dnd";
-import Grid from "./components/Grid";
+import Grid from "./components/Gridv2";
 import { HeroHighlight } from "./components/Highlight";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
