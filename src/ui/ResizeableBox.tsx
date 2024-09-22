@@ -1,22 +1,25 @@
-import { ResizeableBoxProtocol } from "../types/types";
+import { ResizeableBoxProtocol } from "../types";
 import "react-resizable/css/styles.css";
 import { ResizableBox as ResizableComponent } from "react-resizable";
+import { ReactNode } from "react";
 export const ResizeableBox = ({
   width,
   height,
-  minConstraints,
-  maxConstraints,
+  minConstraints = [100, 100],
+  maxConstraints = [500, 500],
   onResizeStop,
-}: ResizeableBoxProtocol) => {
+  resizeHandlesPosition = ["se"],
+}: ResizeableBoxProtocol & { children?: ReactNode }) => {
   return (
     <ResizableComponent
+      resizeHandles={resizeHandlesPosition}
       width={width}
       height={height}
       minConstraints={minConstraints}
       maxConstraints={maxConstraints}
       onResizeStop={(_event, { size }) => onResizeStop(size.width, size.height)}
     >
-      ResizableComponent
+      <p>Resizeable Container</p>
     </ResizableComponent>
   );
 };

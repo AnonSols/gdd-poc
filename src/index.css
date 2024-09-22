@@ -4,7 +4,7 @@
 
 @layer components {
   .layout {
-    @apply bg-slate-500 rounded-md;
+    @apply overflow-y-auto bg-slate-500 rounded-md ;
   }
   body {
     @apply text-neutral-100;

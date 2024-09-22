@@ -71,7 +71,7 @@ You can run the project on a local development server using:
 npm run dev
 ```
 
-The app should now be available at **http://localhost:3000**.
+The app should now be available at **http://localhost:5173/**.
 
 ---
 

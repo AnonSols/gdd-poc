@@ -5,9 +5,13 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import Header from "./ui/Header";
 import Footer from "./ui/Footer";
 import { Toaster } from "react-hot-toast";
+import { NameContextProvider } from "./context/NameContext";
 
 const App = () => {
   return (
+
+    <NameContextProvider>
+
     <DndProvider backend={HTML5Backend}>
       <HeroHighlight className="min-h-dvh w-full grid grid-rows-[auto_2fr_auto]  ">
         <Header />
@@ -19,6 +23,7 @@ const App = () => {
         <Footer />
       </HeroHighlight>
 
+    </DndProvider>
       <Toaster
         position="top-center"
         gutter={12}
@@ -39,7 +44,7 @@ const App = () => {
           },
         }}
       />
-    </DndProvider>
+    </NameContextProvider>
   );
 };
 
