@@ -1,6 +1,7 @@
 import { useDrag } from "react-dnd";
 import { DragItemProtocol } from "../types/index.ts";
 import { ReactNode } from "react";
+import { useNameContext } from "../hooks/useNameContext.ts";
 
 const DraggableBox = ({
   type,
@@ -9,6 +10,7 @@ const DraggableBox = ({
   children?: ReactNode;
   className?: string;
 }) => {
+  const { userName, setUserName } = useNameContext();
   const [{ isDragging }, drag] = useDrag<
     DragItemProtocol,
     void,
@@ -30,6 +32,8 @@ const DraggableBox = ({
         <input
           className="p-3 outine-none  text-black rounded-md"
           type="text"
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
           placeholder="Hello!"
         />
       ) : (
