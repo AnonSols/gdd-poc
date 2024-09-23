@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import GridLayout, { Layout } from "react-grid-layout";
 import "react-grid-layout/css/styles.css";
+import toast from "react-hot-toast";
 import "react-resizable/css/styles.css";
 
 interface LayoutItem extends Layout {
@@ -90,7 +91,9 @@ const Grid = () => {
     setHistory([defaultLayout]);
     setHistoryIndex(0);
     setCounter(4);
-  };
+
+    toast.success("Layout Reset🔥")
+  }; 
 
   // Control panel UI - A form to show the width, height and change of color, text
 
