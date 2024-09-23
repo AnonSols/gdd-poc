@@ -37,7 +37,12 @@ The PoC was developed to replicate features similar to those seen in **Budipress
     - DropContainer.tsx           // The container where items are dropped
     - DragDropContainer.tsx       // Main component integrating drag-and-drop and resizing
   /utils
-    - DnDTypes.ts                 // Type definitions for react-dnd (optional)
+    - DnDTypes.ts                 // Type definitions for react-dnd
+  /Types
+  /Helpers
+  /Context
+  /Pages
+  /Hooks
 ```
  
 
@@ -98,8 +103,8 @@ Future updates will introduce collision prevention and further optimizations for
  
 
 ## **Future Improvements**
-
-- Implementing collision detection to prevent components from overlapping when resizing or dragging.
+ 
+- Implementing Nested Droppable Container with collision detection **WIP**
 - Enhancing scalability to support more complex component structures and interactions.
 - Adding unit tests for better reliability and maintainability.
  
