@@ -33,7 +33,7 @@ const NavBar = () => {
 
       <ul className=" gap-4 hidden lg:flex">
         <a
-          href="https://github.com/AnonSols/gdd-poc/tree/v2.0-feature"
+          href="https://github.com/AnonSols/gdd-poc/"
           className="tracking-wider text-md  md:text-lg lg:text-xl font-bold text-white"
           target="blank"
         >
