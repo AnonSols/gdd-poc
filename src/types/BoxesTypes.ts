@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface DragItemProtocol {
   type: string;
   id: string;
@@ -17,6 +19,12 @@ export interface DropContainerProtocol {
   id: string;
   accentType: string;
 }
+export interface NestedDroppableContainerProtocol {
+  children: ReactNode;
+  id: string; 
+  onDrop: (item: { id: string }, containerId: "outer" | "inner") => void;
+  accentType?: string;
+}
 
 export interface ResizeableBoxProtocol {
   width: number;
@@ -28,15 +36,15 @@ export interface ResizeableBoxProtocol {
   onResizeStop: (newWidth: number, newHeight: number) => void;
 }
 
-
 export type Boxes = {
-    id: string;
-    position: {
-        x: number;
-        y: number;
-    };
-    size: {
-        width: number;
-        height: number;
-    };
-}[]
+  id: string;
+  position: {
+    x: number;
+    y: number;
+  };
+  size: {
+    width: number;
+    height: number;
+  };
+  parent?: "outer" | "inner";
+}[];

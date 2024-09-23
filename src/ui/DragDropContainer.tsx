@@ -5,14 +5,21 @@ import DropContainer from "./DropContainer";
 import { checkCollision } from "../helpers/helpers";
 import { Boxes } from "../types";
 import toast from "react-hot-toast";
+// import NestedDroppable from "./NestedDroppable";
 
 const DragDropContainer = () => {
   const [boxes, setBoxes] = useState<Boxes>([
     {
       id: "box-1",
-      position: { x: 300, y: 100 },
+      position: { x: 50, y: 50 },
       size: { width: 200, height: 200 },
     },
+    // {
+    //   id: "Nestable-resizeable-draggable",
+    //   position: { x: 300, y: 100 },
+    //   size: { width: 200, height: 200 },
+    //   parent:'outer'
+    // },
   ]);
 
   const updatePosition = (
@@ -102,9 +109,16 @@ const DragDropContainer = () => {
       toast.error("Collision detected during resize");
     }
   };
+
+  //   function handleDrop (item:{id:string}, containerId:"outer"|"inner"){
+  //     const updatedBoxes = boxes.map(box=> box.id === item.id ? {...box, parent:containerId}:box);
+
+  // setBoxes(updatedBoxes);
+  //   }
+
   return (
-    <div className="flex gap-2 items-center justify-center ">
-      <div className="self-start gap-y-2">
+    <div className="flex gap-3 items-center justify-center ">
+      <div className=" gap-5  lg:flex lg:flex-col items-center justify-around ">
         <DraggableBox id="div for boxes" type="box" />
         <DraggableBox id=" for input" className=" flex" type="input" />
         {
@@ -122,11 +136,49 @@ const DragDropContainer = () => {
           ))
         }
       </div>
-      <div>
+      <br className="lg:hidden" />
+      <div className="block">
         {" "}
-        <DropContainer id="1" accentType="box" />
-        <DropContainer id="2" accentType="input" />
-        <DropContainer id="3" accentType="resize" />
+        <div className="inline-block">
+          <DropContainer id="1" accentType="box" />
+          <DropContainer id="2" accentType="input" />
+          <DropContainer id="3" accentType="resize" />
+        </div>
+        {/* // This is for Nestable Droppings
+        //Experimental */}
+        {/* <NestedDroppable id="outer" accentType="box" onDrop={handleDrop}>
+          {boxes
+            .filter((box) => box.parent === "outer")
+            .map((box, idx) => (
+              <>
+                <DraggableResizeableBox
+                  key={idx}
+                  type="resize"
+                  id={box.id}
+                  position={box.position}
+                  size={box.size}
+                  onDragStop={() => {}}
+                  onResizeStop={() => {}}
+                />
+              </>
+            ))}
+
+          <NestedDroppable onDrop={handleDrop} id="inner" accentType="box">
+            {boxes
+              .filter((box) => box.parent === "inner")
+              .map((box, idx) => (
+                <DraggableResizeableBox
+                  key={idx}
+                  type="resize"
+                  id={box.id}
+                  position={box.position}
+                  size={box.size}
+                  onDragStop={() => {}}  
+                  onResizeStop={() => {}}  
+                />
+              ))}
+          </NestedDroppable>
+        </NestedDroppable> */}
       </div>
     </div>
   );

@@ -30,14 +30,20 @@ const DropContainer: FC<DropContainerProtocol> = ({ id, accentType }) => {
   return (
     <div
       ref={drop}
-      className={`overflow-y-auto font-bold rounded-lg p-10 w-[300px] h-[300px] bg-[${
-        isOver ? "lightgreen" : canDrop ? "lightyellow" : "transparent"
-      }]  ${isOver ? "text-black " : canDrop ? "text-black" : "text-white"}`}
+      style={{
+        backgroundColor: isOver
+          ? "lightgreen"
+          : canDrop
+          ? "red"
+          : "transparent",
+      }}
+      className={`overflow-y-auto font-bold rounded-lg p-10 w-[300px] h-[300px] flex-wrap flex
+        ${isOver || canDrop ? "text-black" : "text-white"}`}
     >
       <p>{`MY DROP ZONE ${id} for ${accentType}`}</p>
 
-      {items.map((item, _idx) => (
-        <DraggableBox key={_idx} id={item} type={accentType} />
+      {items.map((item, idx) => (
+        <DraggableBox key={idx} id={item} type={accentType} />
       ))}
     </div>
   );

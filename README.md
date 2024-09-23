@@ -1,3 +1,4 @@
+
 # **Drag and Drop PoC with Resizable Components**
 
 ## **Project Overview**
@@ -9,19 +10,16 @@ The PoC was developed to replicate features similar to those seen in **Budipress
 ## **Key Features (Version 2.0)**
 
 1. **Drag-and-Drop Functionality**:
-
    - Components can be dragged and dropped inside a designated container.
    - Supports nesting components (e.g., input fields can be dragged into form containers).
    - Components have been set to prevent collision (WIP for future versions).
 
 2. **Resizable Components**:
-
    - Components within the container can be resized.
    - Resizing is handled using **`react-resizable`**, allowing for dynamic width and height adjustments.
    - Minimum and maximum resize constraints are enforced to ensure proper scaling.
 
 3. **Component Nesting**:
-
    - Supports nested components, allowing users to drag items into larger containers.
    - Components can be dragged out of their parent containers as well.
 
@@ -41,8 +39,7 @@ The PoC was developed to replicate features similar to those seen in **Budipress
   /utils
     - DnDTypes.ts                 // Type definitions for react-dnd (optional)
 ```
-
----
+ 
 
 ## **Installation and Setup**
 
@@ -73,15 +70,13 @@ npm run dev
 
 The app should now be available at **http://localhost:5173/**.
 
----
 
 ## **Usage**
 
 1. **Drag-and-Drop Components**: You can drag components like boxes into the drop container by clicking and dragging.
 2. **Resizing Components**: Components can be resized by dragging the bottom-right corner.
 3. **Nesting Components**: Drag smaller components (e.g., inputs) into larger ones (e.g., forms).
-
----
+  
 
 ## **Versioning**
 
@@ -92,8 +87,7 @@ The app should now be available at **http://localhost:5173/**.
   - Added component nesting within containers.
 
 Future updates will introduce collision prevention and further optimizations for component interaction.
-
----
+ 
 
 ## **Technologies Used**
 
@@ -101,23 +95,26 @@ Future updates will introduce collision prevention and further optimizations for
 - **TypeScript**: To add type safety to the components.
 - **react-dnd**: For drag-and-drop interactions.
 - **react-resizable**: For handling component resizing.
-
----
+ 
 
 ## **Future Improvements**
 
 - Implementing collision detection to prevent components from overlapping when resizing or dragging.
 - Enhancing scalability to support more complex component structures and interactions.
 - Adding unit tests for better reliability and maintainability.
-
----
+ 
 
 ## **Contributing**
 
 If you'd like to contribute to this project, please feel free to submit a pull request. You can fork the repository and create your own feature branches for improvements.
-
----
+ 
 
 ## **License**
 
 This project is licensed under the MIT License.
+ 
+## **Socials**
+
+- **GitHub**: [https://github.com/AnonSols](https://github.com/AnonSols)
+- **LinkedIn**: [https://www.linkedin.com/in/egede-solomon-32766a23a/](https://www.linkedin.com/in/egede-solomon-32766a23a/) 
+ 

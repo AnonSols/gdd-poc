@@ -1,29 +1,27 @@
 import { DndProvider } from "react-dnd";
-import Grid from "./ui/Gridv2";
-import { HeroHighlight } from "./ui/Highlight";
-import { HTML5Backend } from "react-dnd-html5-backend";
-import Header from "./ui/Header";
-import Footer from "./ui/Footer";
+import Grid1 from "./pages/Gridv2";
+import Grid2 from "./pages/Gridv1"; 
+import { HTML5Backend } from "react-dnd-html5-backend"; 
 import { Toaster } from "react-hot-toast";
 import { NameContextProvider } from "./context/NameContext";
-
+import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom'
+import AppLayout from "./ui/AppLayout";
 const App = () => {
   return (
-
     <NameContextProvider>
+      <DndProvider backend={HTML5Backend}>
+      
+      <BrowserRouter>
+      <Routes> 
+        <Route element={<AppLayout />} >
 
-    <DndProvider backend={HTML5Backend}>
-      <HeroHighlight className="min-h-dvh w-full grid grid-rows-[auto_2fr_auto]  ">
-        <Header />
-        <main className="">
-          <section className=" mx-auto overflow-auto p-10 max-w-3xl">
-            <Grid />
-          </section>
-        </main>
-        <Footer />
-      </HeroHighlight>
-
-    </DndProvider>
+        <Route index element={<Navigate replace to="grid-one" />} />
+        <Route path="grid-one" element={<Grid1 />} />
+        <Route path="grid-two" element={<Grid2 />} />
+        </Route>
+      </Routes>
+      </BrowserRouter>
+      </DndProvider>
       <Toaster
         position="top-center"
         gutter={12}

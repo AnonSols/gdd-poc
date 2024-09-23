@@ -27,13 +27,14 @@ const DraggableBox = ({
   });
 
   return (
-    <div ref={drag} className={`box m-3 p-3 opacity-[${isDragging ? 0.5 : 1}]`}>
+    <div ref={drag} className={`box m-5 p-3 flex flex-wrap opacity-[${isDragging ? 0.5 : 1}]`}>
       {type == "input" ? (
         <input
-          className="p-3 outine-none  text-black rounded-md"
+          className="relative p-3 outine-none  text-black rounded-md"
           type="text"
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
+          onBlur={(e) => setUserName(e.target.value)}
           placeholder="Hello!"
         />
       ) : (

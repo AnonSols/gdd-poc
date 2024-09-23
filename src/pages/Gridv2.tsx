@@ -1,4 +1,4 @@
-import DragDropContainer from "./DragDropContainer";
+import DragDropContainer from "../ui/DragDropContainer";
 
 const Gridv2 = () => {
   // update the new grid layout here

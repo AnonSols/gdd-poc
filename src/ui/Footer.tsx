@@ -7,7 +7,7 @@ function Footer() {
       Copyright ©️ {year} made with ❤️ by{" "}
       <a className="mx-2" href="https://github.com/AnonSols">
         {" "}
-        <b>Egede</b>
+        <b className="text-[#a3e635]">Egede</b>
       </a>
     </footer>
   );
