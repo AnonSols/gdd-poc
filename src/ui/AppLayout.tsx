@@ -1,7 +1,7 @@
 import Footer from "./Footer";
 import { HeroHighlight } from "./Highlight";
 import { Outlet } from "react-router-dom";
-import Nav from "./nav";
+import Nav from "./NavBar";
 const AppLayout = () => {
   return (
     <HeroHighlight className="min-h-dvh w-full grid grid-rows-[auto_2fr_auto]  ">
