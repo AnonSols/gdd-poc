@@ -1,11 +1,13 @@
 import Footer from "./Footer";
 import { HeroHighlight } from "./Highlight";
-import Header from "./nav";
 import { Outlet } from "react-router-dom";
+import Nav from "./nav";
 const AppLayout = () => {
   return (
     <HeroHighlight className="min-h-dvh w-full grid grid-rows-[auto_2fr_auto]  ">
-      <Header />
+      <header>
+        <Nav />{" "}
+      </header>
       <main className="">
         <section className=" mx-auto overflow-auto p-10 max-w-3xl">
           {<Outlet />}

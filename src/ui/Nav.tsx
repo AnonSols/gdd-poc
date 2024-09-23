@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { useNameContext } from "../hooks/useNameContext";
 
-const Header = () => {
+const Nav = () => {
   const { userName } = useNameContext();
   return (
     <nav className="px-9 py-7 md:px-10 md:py-8 lg:p-10 flex items-center justify-around backdrop-blur-md bg-slate-100/0.3">
@@ -45,4 +45,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Nav;
